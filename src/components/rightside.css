@@ -1,0 +1,38 @@
+.right-side{
+    border-left: 1px solid rgb(224, 223, 223);
+    height: 100%;
+    width: 395px;
+}
+
+.suggestion-heading{
+    text-align: center;
+    padding-top: 1rem;  
+    font-size: 18px;
+    color:rgb(126, 125, 125);
+}
+
+.follow-suggestions{
+    margin-top: 1rem;
+    margin-left: 5rem;
+    width: 250px;
+    border: 1px solid rgb(189, 187, 187);
+    display: flex;
+    justify-content: space-between;
+}
+
+.follow-info{
+    display: flex;
+}
+
+.follow-suggestions img{
+    height: 35px;
+    width: 35px;
+    border-radius: 50%;
+    margin-right: 0.5rem;
+}
+
+.follow-suggestions button{
+    height: 3vh;
+    margin-top: 0.5rem;
+    margin-right: 0.5rem;
+}
