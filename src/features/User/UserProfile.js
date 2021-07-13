@@ -35,7 +35,7 @@ export const UserProfile = () => {
                 <div className = "profile-name">{singleUser.name}</div>
                 {console.log(singleUser)}
                 {singleUser.userId !==userId ? (
-                    <button onClick = {() => onUnfollowButtonClicked({userId, singleUserId:singleUser.userId, token})}>{singleUser.followers.includes(userId)?"Unfollow":"Follow"}</button>
+                    <button onClick = {() => onUnfollowButtonClicked({userId, singleUserId:singleUser._id, token})}>{singleUser.followers.includes(userId)?"Unfollow":"Follow"}</button>
                 ):(<div></div>) }
             </div>
           </div>  

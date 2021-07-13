@@ -7,10 +7,12 @@ import "./rightside.css";
 
 export const RightSideBar = () => {
     const suggestedUsers = useSelector(state => state.users);
+    console.log(suggestedUsers)
     const usersToFollow = suggestedUsers.users;
     const token = localStorage.getItem('token');
     const userId = localStorage.getItem('userId');
     const dispatch = useDispatch();
+    // console.log(usersToFollow)
     
     const onFollowButtonClicked = ({userId, id, token}) => {
         dispatch(followUser({userId, id, token}))
