@@ -11,8 +11,8 @@ export const NewPostForm = () => {
     const token = localStorage.getItem('token');
     const userId = localStorage.getItem('userId');
     const { currentUser } = useSelector(state => state.auth);
+    const { uploadLoading } = useSelector(state => state.posts);
     const {avatar, username} = currentUser;
-    console.log(currentUser)
     const dispatch = useDispatch();
 
     const onContentChangeHandler = (e) => {
@@ -69,7 +69,7 @@ export const NewPostForm = () => {
                     <button className = "btn-post"
                         onClick = {() => onPostClickedHandler({userId, token, content, avatar, username, image})}
                         disabled = {content === "" && image === ""}
-                    >Post</button>
+                    >{uploadLoading ? <i className="fa fa-spinner" aria-hidden="true"></i> : "Post"}</button>
                 </div>
             </div>
         </div>

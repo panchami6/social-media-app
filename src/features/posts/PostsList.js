@@ -6,7 +6,7 @@ import "./posts.css";
 import { loadSingleUser } from '../User/usersSlice';
 
 export const PostsList = () => {
-    const {posts} = useSelector(state => state.posts)
+    const {posts, likeLoading} = useSelector(state => state.posts)
     const { currentUser } = useSelector(state => state.auth);
     const userId = localStorage.getItem('userId');
     const token = localStorage.getItem('token');
@@ -44,7 +44,7 @@ export const PostsList = () => {
                     </div>
                     <div className = "divider"></div>
                     <div className = "post-footer">
-                    <button onClick = {() => onLikeButtonClicked({post, userId, postId, token})} className = {post.likes.includes(userId) ? "like-btn-active": "like-btn"}><i className="fas fa-heart"></i><span>{post.likes.length}</span></button>
+                    <button onClick = {() => onLikeButtonClicked({post, userId, postId, token})} className = {post.likes.includes(userId) ? "like-btn-active": "like-btn"}>{likeLoading ? <i className="fa fa-spinner" aria-hidden="true"></i> : <i className="fas fa-heart"></i>}<span>{post.likes.length}</span></button>
                     </div>
                 </div>
                 )

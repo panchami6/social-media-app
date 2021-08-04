@@ -28,7 +28,7 @@ export function Login() {
     return () => {
       dispatch(clearState());
     };
-  }, []);
+  }, [dispatch]);
 
   return (
     <>
@@ -46,6 +46,11 @@ export function Login() {
                 <button type = "button" className = "btn-login" onClick={() => loginHandler(user)}>Login</button>
             </form>
             <div style = {{color:"white", paddingTop:"1rem"}}>Not a user? <Link to ="/signup" className = "login-link">Sign up</Link></div>
+            <div className = "guest-login">
+              <h4>Guest Login</h4>
+              <div>email: panchami@gmail.com</div>
+              <div>password: panchami</div>
+            </div>
       </div>
     </>
   );

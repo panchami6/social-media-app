@@ -70,6 +70,9 @@ const initialState = {
     users: [],
     singleUser: null,
     follow:false,
+    loadingFollow: false,
+    LoadingunFollow : false,
+    loadingSingleUser: false,
     suggestedUsers: [],
     status: {
         LOAD_USERS: 0,
@@ -94,33 +97,42 @@ export const usersSlice = createSlice({
             state.status.LOAD_USERS =  status['REJECTED'];
         },
         [followUser.pending]: (state) => {
+            state.loadingFollow = true;
             state.status.LOAD_USERS = status['LOADING'];
         },
         [followUser.fulfilled]: (state, {payload}) =>{
+            state.loadingFollow = false;
             state.status.LOAD_USERS =  status['SUCCESS'];
             state.follow = true;
         },
         [followUser.rejected]: (state) =>{
+            state.loadingFollow = false;
             state.status.LOAD_USERS =  status['REJECTED'];
         },
         [unFollowUser.pending]: (state) => {
+            state.LoadingunFollow = true;
             state.status.LOAD_USERS = status['LOADING'];
         },
         [unFollowUser.fulfilled]: (state, {payload}) =>{
+            state.LoadingunFollow = false;
             state.status.LOAD_USERS =  status['SUCCESS'];
             state.follow = false;
         },
         [unFollowUser.rejected]: (state) =>{
+            state.LoadingunFollow = false;
             state.status.LOAD_USERS =  status['REJECTED'];
         },
         [loadSingleUser.pending]: (state) => {
+            state.loadingSingleUser = true;
             state.status.LOAD_USERS = status['LOADING'];
         },
         [loadSingleUser.fulfilled]: (state, {payload}) =>{
+            state.loadingSingleUser = false;
             state.singleUser = payload;
             state.status.LOAD_USERS =  status['SUCCESS'];
         },
         [loadSingleUser.rejected]: (state) =>{
+            state.loadingSingleUser = false;
             state.status.LOAD_USERS =  status['REJECTED'];
         },
 

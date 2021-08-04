@@ -4,11 +4,11 @@ import "./posts.css"
 
 export const UserPosts = ({singleUser}) => {
     const { userPosts } = useSelector(state => state.posts);
+
     return (
         <div>
         {userPosts ? (
         <div className = "user-posts">
-        {console.log(userPosts)}
             {userPosts.map( post => (
                 <div key={post._id} className = "myposts-card">
                     <div className = "post-header">

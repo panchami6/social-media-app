@@ -7,12 +7,11 @@ import "./rightside.css";
 
 export const RightSideBar = () => {
     const suggestedUsers = useSelector(state => state.users);
-    console.log(suggestedUsers)
+    const {loadingFollow} = useSelector(state =>  state.users)
     const usersToFollow = suggestedUsers.users;
     const token = localStorage.getItem('token');
     const userId = localStorage.getItem('userId');
     const dispatch = useDispatch();
-    // console.log(usersToFollow)
     
     const onFollowButtonClicked = ({userId, id, token}) => {
         dispatch(followUser({userId, id, token}))
@@ -32,14 +31,14 @@ export const RightSideBar = () => {
                             <img alt= "avatar" src ={user.avatar} />
                             <div>{user.username}</div>
                         </div>
-                        <button onClick = {() => onFollowButtonClicked({userId, id, token})}>Follow</button>
+                        <button onClick = {() => onFollowButtonClicked({userId, id, token})}> {loadingFollow ? <i className="fa fa-spinner" aria-hidden="true"></i>: "Follow"}</button>
                     </div>
                 )
             }     
             )}
             </div>
         ) : (
-            <div>Loading...</div>
+            <div>No Suggestions for you.</div>
         )
         }
             

@@ -12,7 +12,6 @@ export const loadPosts = createAsyncThunk(
                 authorization: token,
             },
         })
-        console.log(response.data)
         return response.data;
     }
 )
@@ -37,7 +36,6 @@ export const uploadPost = createAsyncThunk(
                 image: image
             }
         })
-        console.log(response.data)
         return response.data;
     }
 )
@@ -96,6 +94,9 @@ const initialState = {
     myPosts: null,
     userPosts: null,
     error: null,
+    loading: false,
+    uploadLoading: false,
+    likeLoading: false,
     status: {
         LOAD_POSTS: 0,
         UPLOAD_POST: 0,
@@ -114,45 +115,66 @@ const postsSlice = createSlice({
     },
     extraReducers: {
         [uploadPost.pending]: (state) => {
+            state.uploadLoading = true;
             state.status.LOAD_POSTS = status['LOADING']
         },
         [uploadPost.fulfilled]: (state, {payload}) => {
+            state.uploadLoading = false;
             state.status.LOAD_POSTS = status['SUCCESS']
             state.myPosts = payload
         },
         [uploadPost.rejected]: (state) => {
+            state.uploadLoading = false;
             state.status.LOAD_POSTS = status['REJECTED']
         },
         [loadMyPosts.pending]: (state) => {
+            state.loading = true;
             state.status.LOAD_POSTS = status['LOADING']
         },
         [loadMyPosts.fulfilled]: (state, {payload}) => {
+            state.loading = false;
             state.status.LOAD_POSTS = status['SUCCESS']
             state.myPosts = payload
         },
         [loadMyPosts.rejected]: (state) => {
+            state.loading = false;
             state.status.LOAD_POSTS = status['REJECTED']
         },
         [loadPosts.pending]: (state) => {
+            state.loading = true;
             state.status.LOAD_POSTS = status['LOADING']
         },
         [loadPosts.fulfilled]: (state, {payload}) => {
+            state.loading = false;
             state.status.LOAD_POSTS = status['SUCCESS']
             state.posts = payload
         },
         [loadPosts.rejected]: (state) => {
+            state.loading = false;
             state.status.LOAD_POSTS = status['REJECTED']
         },
         [loadUserPosts.pending]: (state) => {
+            state.loading = true;
             state.status.LOAD_POSTS = status['LOADING']
         },
         [loadUserPosts.fulfilled]: (state, {payload}) => {
+            state.loading = false;
             state.status.LOAD_POSTS = status['SUCCESS']
             state.userPosts = payload
         },
         [loadUserPosts.rejected]: (state) => {
+            state.loading = false;
             state.status.LOAD_POSTS = status['REJECTED']
         },
+        [likeUnlikePost.pending]: (state) => {
+            state.likeLoading = true;
+        },
+        [likeUnlikePost.fulfilled]: (state) => {
+            state.likeLoading = false;
+        },
+        [likeUnlikePost.rejected]: (state) => {
+            state.likeLoading = false;
+        }
     }
 })
 

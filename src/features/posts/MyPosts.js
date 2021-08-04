@@ -17,7 +17,6 @@ export const MyPosts = ({currentUser}) => {
                     <div className = "divider"></div>
                     <div className="post-content-image">
                         <div className = "post-content">{post.content}</div>
-                        {/* <img alt="post" src = {post.image} /> */}
                         {post.image  && (<img className = "post-img" alt="post" src = {post.image} />) }
                     </div>
                     <div className = "divider"></div>
