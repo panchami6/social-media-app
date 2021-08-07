@@ -13,7 +13,7 @@ export const UserPosts = ({singleUser}) => {
                 <div key={post._id} className = "myposts-card">
                     <div className = "post-header">
                         <img alt="avatar" className ="post-avatar" src = {singleUser.avatar} />
-                        <h4>{singleUser.name}</h4>
+                        <h4>{singleUser.username}</h4>
                     </div>
                     <div className = "divider"></div>
                     <div className="post-content-image">

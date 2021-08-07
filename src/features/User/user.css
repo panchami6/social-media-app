@@ -1,16 +1,17 @@
 .profile-page{
-    max-width: 700px;
+    max-width: 650px;
     margin: auto;
-    margin-top: 4.2rem;
-    
+    margin-top: 4.2rem;   
 }
 
 .profile{
     border: 1px solid rgb(207, 207, 207);
     display: flex;
+    width: 620px;
+    margin-left: 1rem;
 }
 
-.avatar{
+.profile .avatar{
     border-radius: 50%;
     height: 160px;
     width: 160px;
@@ -57,3 +58,52 @@
     font-weight: bold;
     padding-right: 0.3rem;
 }
+
+.follow-btn{
+    width: 80px;
+    height: 3vh;
+    background-color: rgb(199, 47, 47);
+    border: none;
+    border-radius: 0.3rem;
+    color: white;  
+}
+
+@media only screen and (max-width: 500px) {
+    .profile{
+        border: 1px solid rgb(207, 207, 207);
+        display: flex;
+        justify-content: space-between;
+        width: 290px;
+        margin-left: 1rem;
+    }
+
+    .profile .avatar{
+        border-radius: 50%;
+        height: 70px;
+        width: 70px;
+    }
+    
+    .profile-info{
+        margin-left: 0rem;
+        padding-right: 0.5rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+    }
+
+    .followingNumbers{
+        display: flex;
+        justify-content: space-between;
+        font-size: 12px;
+    }
+
+    .follow-btn{
+        width: 75px;
+        height: 3vh;
+        background-color: rgb(199, 47, 47);
+        border: none;
+        border-radius: 0.3rem;
+        color: white;  
+    }
+
+  }

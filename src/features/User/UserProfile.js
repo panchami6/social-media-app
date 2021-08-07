@@ -4,23 +4,23 @@ import { UserPosts } from "../posts/UserPosts";
 import { Navigation } from "../../Nav/Navigation";
 import { unFollowUser, loadSingleUser } from './usersSlice';
 import "./user.css";
+import { useParams } from 'react-router';
 
 export const UserProfile = () => {
     const { singleUser, LoadingunFollow } = useSelector(state => state.users);
-    const singleUserId = singleUser._id;
+    const {singleUserId} = useParams();
     const { userPosts } = useSelector(state => state.posts);
     const token = localStorage.getItem('token');
     const userId = localStorage.getItem('userId');
     const dispatch = useDispatch();
 
-    const onUnfollowButtonClicked = ({userId, token}) => {
-        dispatch(unFollowUser({userId, singleUserId, token}))
-        dispatch(loadSingleUser({singleUserId, token}))
+    const onUnfollowButtonClicked = ({userId,singleUserId, token}) => {
+        dispatch(unFollowUser({userId, singleUserId, token}))        
     }
 
     useEffect(() => {
-      dispatch(loadSingleUser({singleUserId, token}))
-    }, [LoadingunFollow, singleUserId, token, dispatch])
+      dispatch(loadSingleUser({singleUserId, token})) 
+    }, [LoadingunFollow, token, dispatch])
 
     return (
         <div>
@@ -36,11 +36,8 @@ export const UserProfile = () => {
                     <div className = "followers"> <span>{singleUser.followers.length}</span> Followers</div>
                     <div className = "following"> <span>{singleUser.following.length}</span> Following</div>
                 </div>
-                <div>{singleUser.bio}</div>
-                <div className = "profile-name">{singleUser.name}</div>
-                {console.log(singleUser)}
                 {singleUser.userId !==userId ? (
-                    <button onClick = {() => onUnfollowButtonClicked({userId, singleUserId:singleUser._id, token})}>{LoadingunFollow ? <i className="fa fa-spinner" aria-hidden="true"></i> : (singleUser.followers.includes(userId)?"Unfollow":"Follow")}</button>
+                    <button className="follow-btn" onClick = {() => onUnfollowButtonClicked({userId, singleUserId:singleUser._id, token})}>{LoadingunFollow ? <i className="fa fa-spinner" aria-hidden="true"></i> : (singleUser.followers.includes(userId)?"Unfollow":"Unfollowed")}</button>
                 ):(<div></div>) }
             </div>
           </div>  

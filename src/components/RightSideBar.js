@@ -43,6 +43,6 @@ export const RightSideBar = () => {
         }
             
         </div>
-    )
+    ) 
 }
 

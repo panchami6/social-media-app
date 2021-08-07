@@ -55,6 +55,7 @@ export const NewPostForm = () => {
                     <div className = "new-post-media">
                     <form>
                         <input 
+                        className = "select-img"
                         type="file"
                         name="image"
                          onChange = {handleFileInputChange}/>
@@ -65,11 +66,12 @@ export const NewPostForm = () => {
                     )}
                     </div>
                     </div>
-                   
+                   <div>
                     <button className = "btn-post"
                         onClick = {() => onPostClickedHandler({userId, token, content, avatar, username, image})}
                         disabled = {content === "" && image === ""}
                     >{uploadLoading ? <i className="fa fa-spinner" aria-hidden="true"></i> : "Post"}</button>
+                    </div>
                 </div>
             </div>
         </div>

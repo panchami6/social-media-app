@@ -2,6 +2,7 @@
     width: 650px;
     margin-left: 19rem;
     border-left: 1px solid rgb(224, 223, 223);
+    border-right: 1px solid rgb(224, 223, 223);
 }
 
 .home-header{
@@ -25,18 +26,17 @@
 
 .new-post-input{    
     border: none;
-    width: 500px;
+    width: 550px;
     min-height: 5vh;
     word-wrap: break-word;
     margin-left: 1rem;
     margin-top: 0.3rem;
     font-size: 20px;
     outline: none;
-    background-color: rgb(248, 248, 248);
 } 
 
 .new-post-btn{
-    display: flex;
+    display:flex;
     justify-content: space-between;
     margin-left: 1rem;
     margin-top: 0.5rem;
@@ -44,14 +44,11 @@
     color: grey
 }
 
-.fa-photo-video{
-    margin-right: 0.5rem;
-}
 
 .btn-post{
     height: 5vh;
-    width: 70px;
-    border-radius: 1rem;
+    width: 60px;
+    border-radius: 0.5rem;
     background-color: rgb(199, 47, 47);
     border: none;
     color: white;
@@ -149,3 +146,53 @@
     display: flex;
 }
 
+@media only screen and (max-width: 500px) {
+    .post-page{
+        width: 320px;
+        margin-left: 0rem;
+        border-left: none;
+        border-right: none;
+    } 
+    .btn-post{
+        height: 4vh;
+        width: 60px;
+        border-radius: 0.2rem;
+        font-size: 12px;
+    }  
+
+    .new-post-btn{
+        width: 200px;
+        display: flex;
+        margin-left: 0rem;
+    }
+
+    .new-post-input{    
+        border: none;
+        width: 240px;
+        min-height: 5vh;
+        word-wrap: break-word;
+        margin-left: 1rem;
+        margin-top: 0.3rem;
+        font-size: 16px;
+        outline: none;
+    } 
+
+    .select-img{
+        width: 200px;
+    }
+
+    .post-img{
+        width: 288px;
+        height: 200px;
+        display: flex;
+        align-items: flex-end;
+    }
+
+    .post-header{
+        display: flex;
+        align-items: center;
+        height: 7vh;
+        margin: 0rem 0.5rem;
+       
+    }
+}
